@@ -40,20 +40,22 @@ struct code_seg_t {
 struct page_table_t {
 	/* A row in the page table of the second layer */
 	struct  {
-		addr_t v_index; // The index of virtual address
+		// addr_t v_index; // The index of virtual address
 		addr_t p_index; // The index of physical address
-	} table[1 << SEGMENT_LEN];
-	int size;
+		int occupied;
+	} table[1 << PAGE_LEN];
+	// int size;
 };
 
 /* Mapping virtual addresses and physical ones */
 struct seg_table_t {
 	/* Translation table for the first layer */
 	struct {
-		addr_t v_index;	// Virtual index
+		// addr_t v_index;	// Virtual index
 		struct page_table_t * pages;
-	} table[1 << PAGE_LEN];
-	int size;	// Number of row in the first layer
+		int occupied;
+	} table[1 << SEGMENT_LEN];
+	// int size;	// Number of row in the first layer
 };
 
 /* PCB, describe information about a process */
@@ -68,4 +70,3 @@ struct pcb_t {
 };
 
 #endif
-
