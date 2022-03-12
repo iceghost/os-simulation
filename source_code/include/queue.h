@@ -17,7 +17,4 @@ struct pcb_t* dequeue(struct queue_t* q);
 
 int empty(struct queue_t* q);
 
-void sift_up(struct queue_t* q);
-void sift_down(struct queue_t* q);
-
 #endif
