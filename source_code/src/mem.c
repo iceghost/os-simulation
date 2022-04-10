@@ -218,14 +218,14 @@ int free_mem(addr_t address, struct pcb_t * proc) {
 		for (int i = 0; i < num_pages; i++) {
 			addr_t first_lv = get_first_lv(address + i * PAGE_SIZE);
 			addr_t second_lv = get_second_lv(address + i * PAGE_SIZE);
-			// if (second_lv == 0) {
-			// 	start_of_seg = 1;
-			// }
+			if (second_lv == 0) {
+				start_of_seg = 1;
+			}
 			proc->seg_table->table[first_lv].pages->table[second_lv].occupied = 0;
-			// if (start_of_seg && second_lv == ((1 << PAGE_SIZE) - 1)) {
-			// 	free(proc->seg_table->table[first_lv].pages);
-			// 	proc->seg_table->table[first_lv].occupied = 0;
-			// }
+			if (start_of_seg && second_lv == ((1 << PAGE_SIZE) - 1)) {
+				free(proc->seg_table->table[first_lv].pages);
+				proc->seg_table->table[first_lv].occupied = 0;
+			}
 		}
 
 		return 0;
