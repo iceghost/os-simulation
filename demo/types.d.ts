@@ -1,5 +1,12 @@
-export interface ParseResult {
+export interface OutputParseResult {
   schedule: Timeslot[];
+}
+
+export interface InputParseResult {
+  slotTime: number;
+  numCPUs: number;
+  numProcesses: number;
+  processes: { arrival: number; name: string }[];
 }
 
 export interface Event {
@@ -26,4 +33,10 @@ export interface Page {
 export interface Byte {
   address: number;
   value: number;
+}
+
+export interface CPU {
+  id: number;
+  current: number | null;
+  history: (number | null)[];
 }
