@@ -7,6 +7,9 @@
 <body>
     <div id="app"></div>
     <script>
+var INPUT = `6 2 4
+0 p0
+2 p1`;
 var OUTPUT = `Time slot   0
 	Loaded a process at input/proc/p0, PID: 1
 	CPU 1: Dispatched process  1
@@ -37,17 +40,17 @@ Time slot  14
 	CPU 0: Put process  4 to run queue
 	CPU 0: Dispatched process  2
 Time slot  15
-Time slot  16
 	CPU 1: Processed  1 has finished
 	CPU 1: Dispatched process  3
+Time slot  16
 Time slot  17
 Time slot  18
 	CPU 0: Processed  2 has finished
 	CPU 0: Dispatched process  4
 Time slot  19
-Time slot  20
 	CPU 1: Processed  3 has finished
 	CPU 1 stopped
+Time slot  20
 Time slot  21
 Time slot  22
 	CPU 0: Processed  4 has finished
@@ -91,7 +94,8 @@ MEMORY CONTENT:
     <script src="dist/preact.js"></script>
     <script src="dist/htm.js"></script>
     <script src="dist/tailwindcss.js"></script>
-    <script src="dist/grammar.js"></script>
+    <script src="dist/input.ne.js"></script>
+    <script src="dist/output.ne.js"></script>
     <script src="demo/index.js" type="module"></script>
 </body>
 </html>

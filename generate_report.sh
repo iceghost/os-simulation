@@ -1,10 +1,17 @@
 #!/bin/bash
 
+
+input=$(cat $1)
+
+# run program on a tempory file in input directory
+echo "$input" > source_code/input/tmp.tmp
 cd source_code
 make os
-output=$(./os $1)
-
+output=$(./os tmp.tmp)
 cd ..
+rm -rf source_code/input/tmp.tmp
+
+# create html file
 rm -rf ./output.html
 cat <<EOF > ./output.html
 <!DOCTYPE HTML>
@@ -16,13 +23,15 @@ cat <<EOF > ./output.html
 <body>
     <div id="app"></div>
     <script>
+var INPUT = \`$input\`;
 var OUTPUT = \`$output\`;
     </script>
     <script src="dist/nearley.js"></script>
     <script src="dist/preact.js"></script>
     <script src="dist/htm.js"></script>
     <script src="dist/tailwindcss.js"></script>
-    <script src="dist/grammar.js"></script>
+    <script src="dist/input.ne.js"></script>
+    <script src="dist/output.ne.js"></script>
     <script src="demo/index.js" type="module"></script>
 </body>
 </html>
