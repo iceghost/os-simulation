@@ -19,17 +19,32 @@ cat <<EOF > ./output.html
 <head>
   <meta charset="UTF-8">
   <title>Report</title>
+  <script src="dist/tailwindcss.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100;400;700&display=swap');
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            smooch: ["Smooch Sans", "sans-serif"],
+          }
+        }
+      }
+    }
+  </script>
 </head>
 <body>
     <div id="app"></div>
     <script>
 var INPUT = \`$input\`;
 var OUTPUT = \`$output\`;
+var TIMESTAMP = $(date +%s);
     </script>
     <script src="dist/nearley.js"></script>
     <script src="dist/preact.js"></script>
     <script src="dist/htm.js"></script>
-    <script src="dist/tailwindcss.js"></script>
     <script src="dist/input.ne.js"></script>
     <script src="dist/output.ne.js"></script>
     <script src="demo/index.js" type="module"></script>
